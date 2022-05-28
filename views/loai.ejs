@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        body{
+            display: flex;
+            flex-direction: column;
+            background-color: rgb(190, 221, 250);
+            align-items: center;
+            justify-content: center;
+        }
+        h2{
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 2rem;
+        }
+        a button{
+           padding: 10px 30px;
+           background-color: rgb(252, 145, 45);
+           color: white;
+           border: none;
+           margin-bottom: 30px;
+        }
+        .list{
+            display: flex;
+            flex-direction: column;
+            width: 500px;
+            height: auto;
+            padding: 20px;
+            background-color: white;
+        }
+        .list:hover{
+            box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+        }
+        .cate{
+            margin-top: 20px;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .cate a{
+            text-decoration: none;
+           
+        }
+        .cate button{
+            padding: 5px 10px;
+            background-color: tomato;
+            border: none;
+            cursor: pointer;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h2>Danh Sách Loại Hàng</h2>
+    <a href="addCate">
+        <button>Thêm</button>
+    </a>
+    <div class="list">
+        <% for(let i of loai){%> 
+            <div class="cate">
+                
+                <span><%= i.name_c %> </span>
+                <div class="div">
+                    <a href="/fix/<%= i.id_c %> ">  <button>Sửa</button></a>
+                    <a href="/dell/<%= i.id_c %> "><button id="dell" onclick="dell()" >Xóa</button></a>
+                </div>
+               
+            </div>
+            <% } %> 
+    </div>
+  
+   
+</body>
+<script>
+    let btn = document.querySelector("#dell")
+    console.log(btn);
+    function dell(){
+        let box = document.querySelector(".cate");
+        let name = box.children[0].innerText;
+        console.log(name);
+        let a = confirm(`Bạn có chắc chắn muốn xóa loại hàng`);
+     
+    }
+</script>
+</html>
